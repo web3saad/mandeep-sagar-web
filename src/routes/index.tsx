@@ -831,7 +831,7 @@ function Hero() {
             max-w-[320px]
           "
         >
-          Recommended by leading clinics and patients alike.
+          Recommended by p leading clinics and patients alike.
         </p>
       </div>
 
