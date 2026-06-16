@@ -24,28 +24,20 @@ export default {
       const handler = await getServerEntry();
       return await handler.fetch(request, env, ctx);
     } catch (error) {
-      console.error("Server Error:", error);
+  console.error(error);
 
-      return new Response(
-        `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <title>Server Error</title>
-          </head>
-          <body>
-            <h1>500 - Internal Server Error</h1>
-            <p>Please try again later.</p>
-          </body>
-        </html>
-        `,
-        {
-          status: 500,
-          headers: {
-            "content-type": "text/html; charset=utf-8",
-          },
-        }
-      );
+  return new Response(
+    `<pre style="white-space: pre-wrap;">${
+      error instanceof Error ? error.stack : String(error)
+    }</pre>`,
+    {
+      status: 500,
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+      },
     }
+  );
+}
+    
   },
 };
